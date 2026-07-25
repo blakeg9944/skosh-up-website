@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu | Skosh Up — McCall, ID</title>
+<meta name="description" content="The full Skosh Up menu — iconic soda mashups, protein sodas, build-your-own drinks, and signature soft serve swirls. McCall, Idaho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&family=Comforter+Brush&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #2B2B2B;
+    --brown: #54483C;
+    --taupe: #877460;
+    --cream: #E6E1DA;
+    --gold: #AD8C4C;
+    --line: rgba(43,43,43,0.16);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,h2,h3{
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.02em;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .script{
+    font-family: 'Comforter Brush', cursive;
+    font-weight: 400;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- logo marks ---------- */
+  .circle-logo{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .circle-logo .s{ font-size: 17px; }
+  .circle-logo .div{ width: 1.5px; height: 20px; background: currentColor; }
+  .circle-logo .up{
+    display:flex;
+    flex-direction: column;
+    line-height: 0.85;
+    font-size: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  nav .brand{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+  nav .links{
+    display:flex;
+    gap: 22px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  nav .links a{ text-decoration:none; opacity: 0.85; transition: opacity 0.15s; }
+  nav .links a:hover{ opacity: 1; color: var(--gold); }
+  nav .links a.current{ opacity: 1; color: var(--gold); }
+  @media (max-width: 480px){
+    nav .links{ display:none; }
+  }
+
+  /* ---------- checkerboard divider ---------- */
+  .checker{
+    height: 14px;
+    width: 100%;
+    background-image:
+      linear-gradient(45deg, var(--ink) 25%, transparent 25%, transparent 75%, var(--ink) 75%, var(--ink)),
+      linear-gradient(45deg, var(--ink) 25%, var(--cream) 25%, var(--cream) 75%, var(--ink) 75%, var(--ink));
+    background-size: 14px 14px;
+    background-position: 0 0, 7px 7px;
+  }
+
+  /* ---------- page header ---------- */
+  .page-header{
+    text-align: center;
+    padding: 56px 24px 8px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .page-header .eyebrow{
+    font-family:'Comforter Brush', cursive;
+    font-size: 30px;
+    color: var(--gold);
+    display:block;
+    margin-bottom: 4px;
+  }
+  .page-header h1{ font-size: clamp(34px, 6vw, 52px); }
+
+  /* ---------- menu ---------- */
+  .menu-section{ padding: 30px 20px 8px; }
+  .menu-wrap{ max-width: 980px; margin: 0 auto; }
+
+  .cat{
+    padding: 52px 0 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cat:last-child{ border-bottom: none; }
+
+  .cat-head{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px 20px;
+    margin-bottom: 6px;
+  }
+  .cat-head h3{
+    font-size: clamp(24px, 3.6vw, 32px);
+    position: relative;
+    padding-bottom: 6px;
+  }
+  .cat-head h3::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width: 46px;
+    height: 3px;
+    background: var(--gold);
+  }
+  .cat-prices{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: var(--taupe);
+    white-space: nowrap;
+  }
+  .cat-sub{
+    font-family:'Comforter Brush', cursive;
+    color: var(--brown);
+    font-size: 22px;
+    margin: 6px 0 22px;
+  }
+  .cat-note{
+    font-size: 13px;
+    color: var(--taupe);
+    margin: -14px 0 22px;
+    letter-spacing: 0.02em;
+  }
+
+  .drink-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 40px;
+  }
+  @media (max-width: 620px){
+    .drink-grid{ grid-template-columns: 1fr; }
+  }
+
+  .drink .name{
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .drink .ingredients{
+    color: var(--brown);
+    font-size: 14.5px;
+    line-height: 1.5;
+    margin-top: 2px;
+  }
+
+  /* build your own */
+  .steps{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .step{
+    background: rgba(135,116,96,0.12);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brown);
+  }
+
+  /* swirls layout */
+  .swirl-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 30px 50px;
+  }
+  @media (max-width: 620px){
+    .swirl-grid{ grid-template-columns: 1fr; }
+  }
+  .swirl-grid h4{
+    font-family:'Poppins';
+    font-weight: 800;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .swirl-grid ul{
+    list-style: none;
+    margin: 0; padding: 0;
+    font-size: 15px;
+    line-height: 2;
+    color: var(--brown);
+  }
+
+  /* ---------- cta ---------- */
+  .cta{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .cta h2{ font-size: clamp(24px, 4vw, 32px); }
+  .cta p{
+    color: #C9C4B6;
+    font-size: 15px;
+    margin: 12px auto 26px;
+    max-width: 46ch;
+  }
+  .btn{
+    display:inline-block;
+    padding: 13px 26px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background: var(--gold); color: var(--ink); }
+
+  /* ---------- footer ---------- */
+  footer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align:center;
+    padding: 34px 20px 38px;
+    font-size: 13px;
+    color: var(--brown);
+  }
+
+  a:focus-visible, .btn:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">
+    <span class="circle-logo">
+      <span class="s">S</span><span class="div"></span><span class="up"><span>U</span><span>P</span></span>
+    </span>
+    SKOSH UP
+  </a>
+  <div class="links">
+    <a href="menu.html" class="current">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.instagram.com/skosh.up/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="eyebrow">not your average soda</span>
+  <h1>The Menu</h1>
+</div>
+
+<main class="menu-section">
+  <div class="menu-wrap">
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Iconic Soda Mashups</h3>
+        <div class="cat-prices">24oz $4.50 &nbsp;·&nbsp; 32oz $6</div>
+      </div>
+      <p class="cat-sub">not your average soda</p>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">How It Started</div><div class="ingredients">diet coke, fresh lime, coconut cream</div></div>
+        <div class="drink"><div class="name">First Timer</div><div class="ingredients">coke, cherry, almond, cream, fresh lime</div></div>
+        <div class="drink"><div class="name">Peachin' to the Choir</div><div class="ingredients">dr pepper, peach, peach puree, cream</div></div>
+        <div class="drink"><div class="name">Got It From My Mama</div><div class="ingredients">diet dr pepper, raspberry puree, vanilla sf, coconut cream</div></div>
+        <div class="drink"><div class="name">The Local</div><div class="ingredients">lemonade, sprite, huckleberry, vanilla, fresh huckleberries</div></div>
+        <div class="drink"><div class="name">Golden Hour</div><div class="ingredients">lemonade, fresca, strawberry puree, fresh lime</div></div>
+        <div class="drink"><div class="name">Liquid Sunshine</div><div class="ingredients">mt dew, strawberry, mango puree, coconut cream</div></div>
+        <div class="drink"><div class="name">Here Comes the Sun</div><div class="ingredients">fresca, raspberry puree, lemon sf, fresh lemon</div></div>
+        <div class="drink"><div class="name">Good Libations</div><div class="ingredients">mt dew, vanilla, fresh lime, popping boba</div></div>
+        <div class="drink"><div class="name">Thirst Trap</div><div class="ingredients">sprite, coconut, vanilla, fresh lime</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Protein Sodies</h3>
+        <div class="cat-prices">32oz $9</div>
+      </div>
+      <p class="cat-sub">30g of protein + sparklingly crisp</p>
+      <p class="cat-note">made with no artificial sweeteners · no added sugar · fresh fruit · under 200 calories</p>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">No Regrets</div><div class="ingredients">pineapple, passion fruit, lemon, lime</div></div>
+        <div class="drink"><div class="name">Main Squeeze</div><div class="ingredients">orange cream, berry, orange, lime</div></div>
+        <div class="drink"><div class="name">Plot Twist</div><div class="ingredients">blue raspberry, coconut, raspberries, lime</div></div>
+        <div class="drink"><div class="name">Good Decisions</div><div class="ingredients">peach cream, berry, lemon, strawberries</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Lowkey Legends</h3>
+        <div class="cat-prices">24oz $4.50 &nbsp;·&nbsp; 32oz $6</div>
+      </div>
+      <p class="cat-sub">crispy water that dreams are made of</p>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">Mixmaster</div><div class="ingredients">sparkling water, mango sf, peach sf, vanilla sf, fresh lime</div></div>
+        <div class="drink"><div class="name">Jacob's Ladder</div><div class="ingredients">sparkling water, raspberry puree, almond sf, lemon sf, fresh lemon</div></div>
+        <div class="drink"><div class="name">Howard's Plunge</div><div class="ingredients">sparkling water, orange sf, vanilla sf, fresh huckleberries, fresh orange</div></div>
+        <div class="drink"><div class="name">Francois</div><div class="ingredients">sparkling water, peach sf, strawberry sf, fresh lime, fresh strawberries</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Build Your Own</h3>
+        <div class="cat-prices">24oz $4.50 &nbsp;·&nbsp; 32oz $6</div>
+      </div>
+      <p class="cat-sub">your drink, your rules, make it iconic</p>
+      <p class="cat-note">price includes base + up to 3 add-ins · additional add-ins $0.75 each</p>
+      <div class="steps">
+        <div class="step">1. Pick your base</div>
+        <div class="step">2. Build your flavor</div>
+        <div class="step">3. Top it off</div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Fun Sized</h3>
+        <div class="cat-prices">16oz $3</div>
+      </div>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">Toasty</div><div class="ingredients">root beer, marshmallow, cream</div></div>
+        <div class="drink"><div class="name">Pinky Promise</div><div class="ingredients">cream soda, vanilla, strawberry</div></div>
+        <div class="drink"><div class="name">Wake Maker</div><div class="ingredients">sprite, blue raspberry, sour candy</div></div>
+        <div class="drink"><div class="name">No Diggity</div><div class="ingredients">fresca, peach sf, coconut sf, popping boba</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Amped Up</h3>
+        <div class="cat-prices">24oz $7 &nbsp;·&nbsp; 32oz $9</div>
+      </div>
+      <p class="cat-sub">your favorite energy drinks on another level</p>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">Country Squire</div><div class="ingredients">white monster, pineapple, orange, fresh orange</div></div>
+        <div class="drink"><div class="name">All Fired Up</div><div class="ingredients">white monster, raspberry puree, fresh lime, coconut cream</div></div>
+        <div class="drink"><div class="name">Take Me to the Beach</div><div class="ingredients">peachy keen monster, coconut sf, pineapple, fresh lime</div></div>
+        <div class="drink"><div class="name">Hold Me Back</div><div class="ingredients">redbull, raspberry, pomegranate, popping boba</div></div>
+        <div class="drink"><div class="name">Summer Haze</div><div class="ingredients">redbull sf, strawberry sf, peach puree, fresh lemon</div></div>
+        <div class="drink"><div class="name">Gold Rush</div><div class="ingredients">redbull, passion fruit, mango puree, fresh orange</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Old School Cool</h3>
+        <div class="cat-prices">24oz $7 &nbsp;·&nbsp; 32oz $9</div>
+      </div>
+      <p class="cat-sub">nostalgic soda + soft serve floats reimagined</p>
+      <div class="drink-grid">
+        <div class="drink"><div class="name">Dream Boat</div><div class="ingredients">cream soda, pineapple dole whip soft serve</div></div>
+        <div class="drink"><div class="name">Just So Classic</div><div class="ingredients">root beer, vanilla soft serve</div></div>
+        <div class="drink"><div class="name">Road Trip</div><div class="ingredients">mt dew, pineapple dole whip, vanilla swirl soft serve</div></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <div class="cat-head">
+        <h3>Signature Swirls</h3>
+        <div class="cat-prices">Good $5.50 cup &nbsp;·&nbsp; Great $8 cup or cone</div>
+      </div>
+      <p class="cat-sub">soft serve that is absolutely worth it</p>
+      <p class="cat-note">price includes up to 2 toppings · additional toppings $0.75 each</p>
+      <div class="swirl-grid">
+        <div>
+          <h4>Flavors</h4>
+          <ul>
+            <li>Vanilla</li>
+            <li>Pineapple Dole Whip <span style="font-size:12px;">(dairy free)</span></li>
+            <li>Swirl</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Toppings</h4>
+          <ul>
+            <li>Chocolate sauce</li>
+            <li>Caramel sauce</li>
+            <li>Sprinkles</li>
+            <li>Waffle cone pieces</li>
+            <li>Maraschino cherries</li>
+            <li>Heath bar</li>
+            <li>Butterfinger</li>
+            <li>Reese's</li>
+            <li>Oreo</li>
+            <li>Popping boba</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div class="checker"></div>
+
+<section class="cta">
+  <h2>Ready to Order?</h2>
+  <p>Find us lakeside on Payette Lake and grab your next obsession.</p>
+  <a class="btn btn-primary" href="contact.html">Find Us</a>
+</section>
+
+<footer>
+  <span class="circle-logo">
+    <span class="s">S</span><span class="div"></span><span class="up"><span>U</span><span>P</span></span>
+  </span>
+  Sodas · Swirls · Sweets — McCall, Idaho
+</footer>
+
+</body>
+</html>
