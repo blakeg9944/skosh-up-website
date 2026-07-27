@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Skosh Up | Sodas · Swirls · Sweets — McCall, ID</title>
 <meta name="description" content="Skosh Up is a soda, swirl, and sweets trailer on the water in McCall, Idaho. Iconic soda mashups, protein sodas, and soft serve floats.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skosh Up | Sodas · Swirls · Sweets — McCall, ID">
+<meta property="og:description" content="Skosh Up is a soda, swirl, and sweets trailer on the water in McCall, Idaho. Iconic soda mashups, protein sodas, and soft serve floats.">
+<meta property="og:image" content="assets/trailer.jpg">
+<meta property="og:url" content="index.html">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&family=Comforter+Brush&display=swap" rel="stylesheet">
@@ -32,11 +39,6 @@
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 0.02em;
     margin: 0;
-    font-weight: 400;
-  }
-
-  .script{
-    font-family: 'Comforter Brush', cursive;
     font-weight: 400;
   }
 
@@ -108,6 +110,7 @@
     font-family:'Bebas Neue', sans-serif;
     font-size: 18px;
     letter-spacing: 0.06em;
+    text-decoration: none;
   }
   nav .links{
     display:flex;
@@ -118,8 +121,45 @@
   }
   nav .links a{ text-decoration:none; opacity: 0.85; transition: opacity 0.15s; }
   nav .links a:hover{ opacity: 1; color: var(--gold); }
+  nav .nav-toggle{
+    display:none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 22px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  nav .nav-toggle span{
+    display: block;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  nav .nav-toggle.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  nav .nav-toggle.open span:nth-child(2){ opacity: 0; }
+  nav .nav-toggle.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
   @media (max-width: 480px){
-    nav .links{ display:none; }
+    nav .nav-toggle{ display:flex; }
+    nav .links{
+      display:none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: var(--cream);
+      padding: 6px 24px 18px;
+      box-shadow: 0 8px 20px rgba(43,43,43,0.18);
+    }
+    nav .links.open{ display:flex; }
+    nav .links a{ padding: 13px 0; color: var(--ink); opacity: 1; border-bottom: 1px solid var(--line); }
+    nav .links a:hover{ color: var(--gold); }
   }
 
   /* ---------- checkerboard divider (signature element) ---------- */
@@ -449,6 +489,18 @@
     font-size: 13px;
     color: var(--brown);
   }
+  footer .footer-links{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  footer .footer-links a{ text-decoration:none; color: var(--brown); opacity: 0.8; transition: opacity 0.15s, color 0.15s; }
+  footer .footer-links a:hover{ opacity: 1; color: var(--gold); }
+  footer .footer-links a.current{ opacity: 1; color: var(--gold); }
 
   /* focus visibility */
   a:focus-visible, .btn:focus-visible{
@@ -464,13 +516,16 @@
 <body>
 
 <nav>
-  <div class="brand">
+  <a class="brand" href="index.html">
     <span class="circle-logo">
       <span class="s">S</span><span class="div"></span><span class="up"><span>U</span><span>P</span></span>
     </span>
     SKOSH UP
-  </div>
-  <div class="links">
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="links" id="navLinks">
     <a href="menu.html">Menu</a>
     <a href="events.html">Events</a>
     <a href="about.html">About Us</a>
@@ -479,6 +534,15 @@
     <a href="https://www.instagram.com/skosh.up/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </nav>
+<script>
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
 
 <section class="hero">
   <video
@@ -585,6 +649,14 @@
   <span class="circle-logo">
     <span class="s">S</span><span class="div"></span><span class="up"><span>U</span><span>P</span></span>
   </span>
+  <div class="footer-links">
+    <a href="index.html" class="current">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://www.instagram.com/skosh.up/" target="_blank" rel="noopener">Instagram</a>
+  </div>
   Sodas · Swirls · Sweets — McCall, Idaho
 </footer>
 
