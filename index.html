@@ -140,22 +140,40 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background-image:
-      linear-gradient(180deg, rgba(43,43,43,0.20) 0%, rgba(30,26,20,0.60) 62%, rgba(20,17,13,0.88) 100%),
-      url('assets/swirl-sunset-optimized.jpg');
-    background-size: cover;
-    background-position: center 62%;
+    overflow: hidden;
     color: var(--cream);
     padding: 32px 24px 0;
+    background: var(--ink);
+  }
+
+  .hero-media{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero-overlay{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image:
+      linear-gradient(180deg, rgba(43,43,43,0.25) 0%, rgba(30,26,20,0.62) 62%, rgba(20,17,13,0.90) 100%);
   }
 
   .hero-top{
+    position: relative;
+    z-index: 2;
     display:flex;
     justify-content: center;
     padding-top: 30px;
   }
 
   .hero-mid{
+    position: relative;
+    z-index: 2;
     flex: 1;
     display:flex;
     align-items:center;
@@ -163,14 +181,20 @@
     text-align:center;
     padding: 40px 12px;
   }
-  .hero-mid p.script{
-    font-size: clamp(30px, 6vw, 50px);
-    line-height: 1.2;
-    max-width: 14ch;
-    color: var(--gold);
+  .hero-mid p.tagline{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 8.5vw, 66px);
+    line-height: 1.08;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    max-width: 15ch;
+    text-shadow: 0 3px 22px rgba(0,0,0,0.55);
   }
+  .hero-mid p.tagline .accent{ color: var(--gold); }
 
   .hero-bottom{
+    position: relative;
+    z-index: 2;
     display:flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -271,23 +295,12 @@
     border-radius: 4px;
     display: block;
   }
+  .photo-grid .photo-feature{
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
   @media (max-width: 620px){
     .photo-grid{ grid-template-columns: 1fr; }
-  }
-  .scroll-video{
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
-    aspect-ratio: 9 / 16;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #000;
-  }
-  .scroll-video video{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
   }
   .ig-embed-wrap{
     display:flex;
@@ -343,6 +356,17 @@
 </nav>
 
 <section class="hero">
+  <video
+    class="hero-media"
+    src="assets/trailer-loop.mp4"
+    poster="assets/team-dock-optimized.jpg"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
+  </video>
+  <div class="hero-overlay"></div>
   <div class="hero-top">
     <div class="box-logo">
       <span class="main">SKOSH</span>
@@ -351,7 +375,7 @@
     </div>
   </div>
   <div class="hero-mid">
-    <p class="script">welcome to your next obsession</p>
+    <p class="tagline">welcome to your <span class="accent">next obsession</span></p>
   </div>
   <div class="hero-bottom">
     <span class="pill">Sodas · Swirls · Sweets</span>
@@ -395,18 +419,8 @@
   <div class="gallery-wrap">
     <span class="eyebrow">a little taste</span>
     <h2>From the Trailer</h2>
-    <div class="scroll-video">
-      <video
-        src="assets/trailer-loop.mp4"
-        poster="assets/team-dock-optimized.jpg"
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        data-scroll-play>
-      </video>
-    </div>
     <div class="photo-grid">
+      <img class="photo-feature" src="assets/sunset.webp" alt="Skosh Up trailer parked at the marina under a fiery sunset over Payette Lake" loading="lazy">
       <img src="assets/team-dock-optimized.jpg" alt="The Skosh Up crew on the dock at Payette Lake" loading="lazy">
       <img src="assets/swirl-sunset-optimized.jpg" alt="Soft serve swirl cone with cherry on top at sunset over Payette Lake" loading="lazy">
     </div>
@@ -423,22 +437,6 @@
   </span>
   Sodas · Swirls · Sweets — McCall, Idaho
 </footer>
-
-<script>
-  const scrollVideos = document.querySelectorAll('[data-scroll-play]');
-  if (scrollVideos.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.play().catch(() => {});
-        } else {
-          entry.target.pause();
-        }
-      });
-    }, { threshold: 0.4 });
-    scrollVideos.forEach((video) => observer.observe(video));
-  }
-</script>
 
 </body>
 </html>
