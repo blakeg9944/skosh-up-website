@@ -162,6 +162,7 @@
     max-width: 720px;
     margin: 0 auto;
   }
+  .page-header .header-spacer{ display: none; }
   .page-header .eyebrow{
     font-family:'Comforter Brush', cursive;
     font-size: 30px;
@@ -170,6 +171,23 @@
     margin-bottom: 4px;
   }
   .page-header h1{ font-size: clamp(34px, 6vw, 52px); }
+
+  @media (min-width: 801px){
+    .page-header{
+      display: flex;
+      align-items: flex-end;
+      gap: 48px;
+      max-width: 1100px;
+      text-align: left;
+      padding: 56px 24px 8px;
+    }
+    .page-header .header-spacer{
+      display: block;
+      flex: 0 0 40%;
+      max-width: 380px;
+    }
+    .page-header .header-text{ flex: 1; }
+  }
 
   /* ---------- photo + intro layout ---------- */
   .about-hero{
@@ -206,7 +224,7 @@
   .about-hero .story-column .pull-quote{
     margin: 0 0 40px;
     padding: 0;
-    text-align: left;
+    text-align: center;
   }
   .team-photo-wrap img{
     width: 100%;
@@ -232,9 +250,8 @@
       width: 100%;
       max-width: 480px;
       position: static;
-    }
-    .about-hero .story-column .pull-quote{
-      text-align: center;
+      top: auto;
+      transform: none;
     }
   }
 
@@ -258,8 +275,10 @@
     padding: 0 24px;
     text-align: center;
   }
-  .pull-quote .script{
-    font-size: clamp(32px, 6vw, 48px);
+  .pull-quote .motto{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 5vw, 40px);
+    letter-spacing: 0.03em;
     color: var(--gold);
     line-height: 1.2;
   }
@@ -364,8 +383,11 @@
 </script>
 
 <div class="page-header">
-  <span class="eyebrow">meet the family</span>
-  <h1>About Us</h1>
+  <div class="header-spacer"></div>
+  <div class="header-text">
+    <span class="eyebrow">meet the family</span>
+    <h1>About Us</h1>
+  </div>
 </div>
 
 <div class="about-hero">
@@ -388,7 +410,7 @@
 </div>
 
 <div class="pull-quote">
-  <p class="script">"just a skosh more"</p>
+  <p class="motto">"just a skosh more"</p>
 </div>
 
 <div class="story" style="padding-top:0;">
@@ -396,10 +418,10 @@
 
   <p>We can't wait to welcome you to SKOSHup.</p>
 </div>
-</div>
-</div>
 
 <div class="sunmoji">☀️</div>
+</div>
+</div>
 
 <div class="checker"></div>
 
